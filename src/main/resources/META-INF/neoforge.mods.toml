@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+issueTrackerURL="https://github.com/Mrbysco/SteveChair/issues"
+license="MIT"
+
+[[mods]]
+modId="steve_chair"
+version="${file.jarVersion}"
+displayName="Steve Chair Mod"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/steve-chair"
+authors="Mrbysco"
+description='''
+Adds a Steve shaped chair
+'''
+[[dependencies.steve_chair]]
+modId="minecraft"
+type="required"
+versionRange="[1.21,1.22)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.steve_chair]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.1,)"
+ordering="NONE"
+side="BOTH"
