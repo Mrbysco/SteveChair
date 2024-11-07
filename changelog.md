@@ -1,1 +1,1 @@
-* Initial build
+* Add the Steve Chair to the Builting Blocks creative tab so it can show in JEI
