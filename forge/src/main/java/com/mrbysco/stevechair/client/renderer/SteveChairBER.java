@@ -58,7 +58,7 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 			blockRenderer.getModelRenderer()
 					.renderModel(
 							poseStack.last(),
-							bufferSource.getBuffer(renderType != null ? renderType : net.neoforged.neoforge.client.RenderTypeHelper.getEntityRenderType(rt, false)),
+							bufferSource.getBuffer(renderType != null ? renderType : net.neoforged.neoforge.client.RenderTypeHelper.getEntityRenderType(rt)),
 							state,
 							bakedmodel,
 							f,

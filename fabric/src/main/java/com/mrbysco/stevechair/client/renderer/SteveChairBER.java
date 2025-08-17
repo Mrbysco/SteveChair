@@ -33,7 +33,7 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 		poseStack.translate(0.5D, 0, 0.5D);
 		poseStack.mulPose(Axis.YP.rotationDegrees(-degrees));
 		poseStack.translate(-0.5D, 0, -0.5D);
-		renderActualBlock(state, poseStack, bufferSource, packedLight, packedOverlay, ItemBlockRenderTypes.getRenderType(state, false));
+		renderActualBlock(state, poseStack, bufferSource, packedLight, packedOverlay, ItemBlockRenderTypes.getRenderType(state));
 		poseStack.popPose();
 	}
 

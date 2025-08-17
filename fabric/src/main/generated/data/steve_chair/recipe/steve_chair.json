@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "B": {
-      "item": "minecraft:blue_wool"
-    },
-    "C": {
-      "item": "minecraft:cyan_wool"
-    },
-    "H": {
-      "item": "minecraft:brown_wool"
-    },
-    "Y": {
-      "item": "minecraft:yellow_wool"
-    }
+    "B": "minecraft:blue_wool",
+    "C": "minecraft:cyan_wool",
+    "H": "minecraft:brown_wool",
+    "Y": "minecraft:yellow_wool"
   },
   "pattern": [
     " H ",
