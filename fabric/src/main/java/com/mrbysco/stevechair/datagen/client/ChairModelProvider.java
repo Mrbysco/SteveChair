@@ -16,7 +16,7 @@ public class ChairModelProvider extends FabricModelProvider {
 	@Override
 	public void generateBlockStateModels(BlockModelGenerators blockModels) {
 		blockModels.blockStateOutput.accept(
-				BlockModelGenerators.createSimpleBlock(ChairRegistry.STEVE_CHAIR.get(), modLoc("block/steve_chair"))
+				BlockModelGenerators.createSimpleBlock(ChairRegistry.STEVE_CHAIR.get(), BlockModelGenerators.plainVariant(modLoc("block/steve_chair")))
 		);
 	}
 

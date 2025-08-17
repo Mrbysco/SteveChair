@@ -3,17 +3,18 @@ package com.mrbysco.stevechair.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.mrbysco.stevechair.block.entity.SteveChairBlockEntity;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.block.ModelBlockRenderer;
+import net.minecraft.client.renderer.block.model.BlockStateModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.neoforged.neoforge.client.model.data.ModelData;
+import net.minecraft.world.phys.Vec3;
 
 public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity> {
 
@@ -24,7 +25,7 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 	}
 
 	@Override
-	public void render(SteveChairBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+	public void render(SteveChairBlockEntity blockEntity, float v, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, Vec3 vec3) {
 		final BlockState state = blockEntity.getBlockState();
 		if (state == null) return;
 		int rotation = state.getValue(SkullBlock.ROTATION);
@@ -33,7 +34,7 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 		poseStack.translate(0.5D, 0, 0.5D);
 		poseStack.mulPose(Axis.YP.rotationDegrees(-degrees));
 		poseStack.translate(-0.5D, 0, -0.5D);
-		renderActualBlock(state, poseStack, bufferSource, packedLight, packedOverlay, ModelData.EMPTY, null);
+		renderActualBlock(state, poseStack, bufferSource, packedLight, packedOverlay, ItemBlockRenderTypes.getRenderType(state));
 		poseStack.popPose();
 	}
 
@@ -44,30 +45,24 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 	 * @param bufferSource The MultiBufferSource to render the block in
 	 * @param packedLight The packed light value
 	 * @param packedOverlay The packed overlay value
-	 * @param modelData The ModelData to render the block with
 	 * @param renderType The RenderType to render the block with
 	 */
-	private void renderActualBlock(BlockState state, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, ModelData modelData, RenderType renderType) {
-		BakedModel bakedmodel = blockRenderer.getBlockModel(state);
+	private void renderActualBlock(BlockState state, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, RenderType renderType) {
+		BlockStateModel bakedmodel = blockRenderer.getBlockModel(state);
 		int i = blockRenderer.blockColors.getColor(state, null, null, 0);
 		float f = (float) (i >> 16 & 0xFF) / 255.0F;
 		float f1 = (float) (i >> 8 & 0xFF) / 255.0F;
 		float f2 = (float) (i & 0xFF) / 255.0F;
-		for (RenderType rt : bakedmodel.getRenderTypes(state, RandomSource.create(42), ModelData
-				.EMPTY))
-			blockRenderer.getModelRenderer()
-					.renderModel(
-							poseStack.last(),
-							bufferSource.getBuffer(renderType != null ? renderType : net.neoforged.neoforge.client.RenderTypeHelper.getEntityRenderType(rt)),
-							state,
-							bakedmodel,
-							f,
-							f1,
-							f2,
-							packedLight,
-							packedOverlay,
-							ModelData.EMPTY,
-							rt
-					);
+		ModelBlockRenderer
+				.renderModel(
+						poseStack.last(),
+						bufferSource.getBuffer(renderType),
+						bakedmodel,
+						f,
+						f1,
+						f2,
+						packedLight,
+						packedOverlay
+				);
 	}
 }

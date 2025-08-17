@@ -8,12 +8,14 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.block.ModelBlockRenderer;
+import net.minecraft.client.renderer.block.model.BlockStateModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
+import net.minecraft.world.phys.Vec3;
 
 public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity> {
 
@@ -24,7 +26,7 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 	}
 
 	@Override
-	public void render(SteveChairBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+	public void render(SteveChairBlockEntity blockEntity, float v, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, Vec3 vec3) {
 		final BlockState state = blockEntity.getBlockState();
 		if (state == null) return;
 		int rotation = state.getValue(SkullBlock.ROTATION);
@@ -47,16 +49,15 @@ public class SteveChairBER implements BlockEntityRenderer<SteveChairBlockEntity>
 	 * @param renderType The RenderType to render the block with
 	 */
 	private void renderActualBlock(BlockState state, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, RenderType renderType) {
-		BakedModel bakedmodel = blockRenderer.getBlockModel(state);
+		BlockStateModel bakedmodel = blockRenderer.getBlockModel(state);
 		int i = ((BlockRenderDispatcherAccessor)blockRenderer).stevechair$blockColors().getColor(state, null, null, 0);
 		float r = (float) (i >> 16 & 0xFF) / 255.0F;
 		float g = (float) (i >> 8 & 0xFF) / 255.0F;
 		float b = (float) (i & 0xFF) / 255.0F;
-		blockRenderer.getModelRenderer()
+		ModelBlockRenderer
 				.renderModel(
 						poseStack.last(),
 						bufferSource.getBuffer(renderType),
-						state,
 						bakedmodel,
 						r,
 						g,

@@ -1,6 +1,7 @@
 package com.mrbysco.stevechair.datagen.server;
 
 import com.mrbysco.stevechair.registration.ChairRegistry;
+import com.mrbysco.stevechair.registration.RegistryObject;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -33,7 +34,7 @@ public class ChairLootProvider extends LootTableProvider {
 
 		@Override
 		protected Iterable<Block> getKnownBlocks() {
-			return (Iterable<Block>) ChairRegistry.BLOCKS.getEntries().stream().map(holder -> (Block) holder.get())::iterator;
+			return ChairRegistry.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
 		}
 	}
 }
