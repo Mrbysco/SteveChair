@@ -8,7 +8,7 @@ This mod adds a Steve Chair to the game. The chair looks like Minecraft Steve wh
 
 ## License ##
 * Steve Chair is licensed under the MIT License
-  - (c) 2024 Mrbysco
+  - (c) 2025 Mrbysco
   - [![License](https://img.shields.io/badge/License-MIT-red.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 ## Downloads ##

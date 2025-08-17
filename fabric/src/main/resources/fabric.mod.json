@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "steve_chair",
+  "version": "${version}",
+  "name": "Steve Chair Mod",
+  "description": "Adds a Steve shaped chair",
+  "authors": [
+    "Mrbysco"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/steve-chair",
+    "sources": "https://github.com/Mrbysco/SteveChair",
+    "issues": "https://github.com/Mrbysco/SteveChair/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.mrbysco.stevechair.datagen.ChairDatagen"
+    ],
+    "main": [
+      "com.mrbysco.stevechair.SteveChairFabric"
+    ],
+    "client": [
+      "com.mrbysco.stevechair.SteveChairFabricClient"
+    ]
+  },
+  "mixins": [
+    "stevechair.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
+
