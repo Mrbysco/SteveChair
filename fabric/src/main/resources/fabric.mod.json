@@ -31,6 +31,6 @@
     "java": ">=21",
     "fabric-api": "*"
   },
-  "accessWidener": "stevechair.accesswidener"
+  "accessWidener": "steve_chair.accesswidener"
 }
 
