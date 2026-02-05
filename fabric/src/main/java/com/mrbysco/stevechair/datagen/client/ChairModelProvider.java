@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class ChairModelProvider extends FabricModelProvider {
 	public ChairModelProvider(FabricDataOutput packOutput) {
@@ -25,7 +25,7 @@ public class ChairModelProvider extends FabricModelProvider {
 
 	}
 
-	private ResourceLocation modLoc(String path) {
-		return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
+	private Identifier modLoc(String path) {
+		return Identifier.fromNamespaceAndPath(Constants.MOD_ID, path);
 	}
 }

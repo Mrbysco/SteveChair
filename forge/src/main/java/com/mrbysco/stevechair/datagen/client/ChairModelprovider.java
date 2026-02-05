@@ -6,7 +6,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class ChairModelprovider extends ModelProvider {
 	public ChairModelprovider(PackOutput packOutput) {
@@ -20,7 +20,7 @@ public class ChairModelprovider extends ModelProvider {
 		);
 	}
 
-	private ResourceLocation modLoc(String path) {
-		return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
+	private Identifier modLoc(String path) {
+		return Identifier.fromNamespaceAndPath(Constants.MOD_ID, path);
 	}
 }
