@@ -3,13 +3,13 @@ package com.mrbysco.stevechair.datagen.client;
 import com.mrbysco.stevechair.Constants;
 import com.mrbysco.stevechair.registration.ChairRegistry;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.resources.Identifier;
 
 public class ChairModelProvider extends FabricModelProvider {
-	public ChairModelProvider(FabricDataOutput packOutput) {
+	public ChairModelProvider(FabricPackOutput packOutput) {
 		super(packOutput);
 	}
 
